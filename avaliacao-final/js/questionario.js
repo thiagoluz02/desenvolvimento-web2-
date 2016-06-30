@@ -22,29 +22,23 @@
         });
     }
 
-    function _excluirSelecionados($scope, id) {
+   function _excluirSelecionados($scope, questionarioId) {
         if (confirm('Confirma a exlusão do questionario?')) {
             _.each($scope.questionarios, function (questionario, id) {
                 if (questionario.excluir) {
-                    $http
-                        .delete(URL_API + 'questionarios/' + id + '.json')
-                        .then(function () {
-                            $scope.buscaquestionarios();
-                        }, function (err) {
-                            alert(err.message);
-                        });
-
+                    var questionarioRef = firebase.database().ref('/questionarios/' + id);
+                    questionarioRef.remove();
                 }
             });
+
         }
     }
-
     function _buscaquestionarios($scope) {
        
     }
 
     function _excluiQuestionario($scope, id) {
-        if (confirm('Confirma a exlusão do questionario?')) {
+        if (confirm('Confirma a exclusão do questionario?')) {
             var questionariosRef = firebase.database().ref('/questionarios/' + id);
             questionariosRef.remove();
         }

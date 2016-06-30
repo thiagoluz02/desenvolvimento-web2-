@@ -40,22 +40,17 @@
             });
         }
 
-        function _excluirSelecionados($scope, id) {
-            if (confirm('Confirma a exlusão do turma?')) {
-                _.each($scope.turma, function (turma, id) {
-                    if (turma.excluir) {
-                        $http
-                            .delete(URL_API + 'turmas/' + id + '.json')
-                            .then(function () {
-                                $scope.buscaturmas();
-                            }, function (err) {
-                                alert(err.message);
-                            });
+    function _excluirSelecionados($scope, turmaId) {
+        if (confirm('Confirma a exlusão do turma?')) {
+            _.each($scope.turmas, function (turma, id) {
+                if (turma.excluir) {
+                    var turmaRef = firebase.database().ref('/turmas/' + id);
+                    turmaRef.remove();
+                }
+            });
 
-                    }
-                });
-            }
         }
+    }
 
   function _buscaturmas($scope) {
         
@@ -70,7 +65,7 @@
     }
 
     function _excluiTurma($scope, id) {
-        if (confirm('Confirma a exlusão do turma?')) {
+        if (confirm('Confirma a exclusão do turma?')) {
             var turmaRef = firebase.database().ref('/turmas/' + id);
             turmaRef.remove();
         }
