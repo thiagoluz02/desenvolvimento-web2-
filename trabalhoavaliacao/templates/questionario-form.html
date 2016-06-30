@@ -1,0 +1,57 @@
+<div class="container-fluid">
+    <div class="panel panel-default panel-perguntas">
+        <div class="panel-heading">Questionario</div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-12">
+                    
+                    <form class="form-horizontal" name="formquestionario" ng-submit="gravar()" novalidate>
+                        <div class="form-group" ng-class="{'has-error': formquestionario.texto.$error.required && formquestionario.$submitted}">
+                            <label for="nome" class="col-sm-2 control-label">Nome do quetinario</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="nome" name="nome" ng-model="questionario.nome" placeholder="Nome" required>
+                                <span class="help-block" ng-if="formquestionario.nome.$error.required && formquestionario.$submitted">* Informe o nome da questionario</span>
+                            </div>
+                        </div>
+                       
+                        <div class="pull-right">
+                            <button class="btn btn-primary" type="submit">OK</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 20px;" ng-if="questionario.id">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="pergunta" class="col-sm-2 control-label">Selecione o perunta</label>
+                        <div class="col-sm-8">
+                            <select class="form-control" name="pergunta" id="pergunta" ng-model="pergunta" ng-options="pergunta as pergunta.texto for pergunta in perguntas track by pergunta.id">
+                            </select>
+                        </div>
+                        <div class="col-sm-2">
+                            <button class="btn btn-primary" ng-click="adicionarPergunta(pergunta)">Adicionar</button>
+                        </div>
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>tipo</th>
+                                    <th>pergunta</th>
+                                   
+                                    <th>&nbsp;</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="pergunta in perguntaQuestionario track by $index">
+                                    <td>{{pergunta.tipo}}</td>
+                                    <td>{{pergunta.texto}}</td>
+                                    
+                                    <td><button class="btn btn-danger" ng-click="removePergunta(pergunta.id)"><i class="glyphicon glyphicon-trash"></i></button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>

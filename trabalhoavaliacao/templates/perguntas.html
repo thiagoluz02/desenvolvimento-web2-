@@ -1,0 +1,38 @@
+ <div class="container-fluid">
+    <div class="panel panel-default panel-perguntas">
+        <div class="panel-heading">Perguntas</div>
+        <div class="panel-body">
+            <div class="btn-group pull-right">
+                <button class="btn btn-success" ng-click="editaPerguntas({})"><i class="glyphicon glyphicon-plus"></i> Incluir</button>
+                <button class="btn btn-danger" ng-click="excluirSelecionados()"><i class="glyphicon glyphicon-trash"></i> Excluir</button>
+            </div>
+        </div>
+        <table class="table">
+            <thead>
+                    <tr>
+                    <th>
+                        <input type="checkbox" ng-model="todos" ng-click="marcarTodos()">
+                    </th>
+                    <th>Lista de pergunta </th>
+                    <th>tipo</th>
+                    
+                    <th>&nbsp;</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="(id, pergunta) in perguntas track by $index">
+                    <td>
+                        <input type="checkbox" name="excluir" ng-model="pergunta.excluir">
+                    </td>
+                    <td>{{pergunta.texto}}</td>
+                    <td>{{pergunta.tipo | tipoPerguntaFilter}}</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-primary" ng-click="editaPerguntas(pergunta, id)"><i class="glyphicon glyphicon-pencil"></i></button>
+                        <button type="button" class="btn btn-danger" ng-click="excluiPerguntas(id)"><i class="glyphicon glyphicon-trash"></i></button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

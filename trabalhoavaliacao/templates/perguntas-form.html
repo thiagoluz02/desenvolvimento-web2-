@@ -1,0 +1,53 @@
+<div class="container-fluid">
+    <div class="panel panel-default panel-perguntas">
+        <div class="panel-heading">perguntas</div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-12">
+
+                    <form class="form-horizontal" name="formperguntas" ng-submit="gravar()" novalidate>
+                        <div  class = "-grupo de entrada input-group-lg" > 
+                               <label for="sel1">Escreva sua pergunta:</label>
+                                <input  type= "text"  class= "form-control" ng-model="perguntas.texto" placeholder= "digite sua pergunta"  aria-describedby= "sizing-addon1" > 
+                                </div>
+                 
+                               <div class="col-md-12">
+                   
+                       <label for="sel1">Selecione o tipo de sua pergunta:</label>
+      <select class="form-control" ng-model="perguntas.tipo" id="sel1">
+        <option value="1">sobre infraestrutura</option>
+        <option value="2"> valores </option>
+        <option value="3"> atendimento </option>
+        <option value="3">outro </option>
+      </select>
+                        
+                        <div class="col-sm-2">
+                        
+                    
+                                   </div></div>
+                    </form>
+                </div>
+        
+            <div class="row" style="margin-top: 20px;">
+          <div class="modal-footer">
+    <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+    <button class="btn btn-warning" type="button" ng-click="cancel()">Cancelar</button>
+                        </div>
+                        <table class="table table-hover">
+                            <thead>
+                             
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="pergunta in perguntasTurma track by $index">
+                                    <td>{{perguntas.texto}}</td>
+                                    <td>{{perguntas.tipo}}</td>
+                                    
+                                    <td><button class="btn btn-danger" ng-click="removerperguntas(perguntas.id)"><i class="glyphicon glyphicon-trash"></i></button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>

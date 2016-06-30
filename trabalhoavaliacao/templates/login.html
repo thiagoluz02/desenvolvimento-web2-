@@ -1,0 +1,40 @@
+<div class="container" ng-controller="LoginCtrl">
+  <div class="row">
+    <div class="col-md-offset-4 col-md-4">
+      <div class="panel panel-default">
+        <div class="panel-heading">Informe suas credenciais</div>
+        <div class="panel-body">
+        <uib-alert ng-repeat="alert in alerts" type="danger" close="closeAlert($index)">{{alert}}</uib-alert>
+          <form name="formLogin" novalidate> <!-- novalidade cancela a validação do html5 -->
+            <div class="form-group">
+              <label class="sr-only" for="email">Email</label>
+              <div class="input-group">
+                <input type="email" id="email" name="email" ng-model="email" class="form-control" placeholder="Informe seu email de cadastro" required>
+                <div class="input-group-addon">@</div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="senha" class="sr-only"></label>
+              <div class="input-group">
+                <input type="password" class="form-control" id="senha" ng-model="senha" name="senha" placeholder="Informe sua senha" required>
+                <div class="input-group-addon">
+                  <i class="glyphicon glyphicon-lock"></i>
+                </div>
+              </div>
+            </div>
+            <div class="pull-right">
+              <div class="btn-group" role="group">
+                <button class="btn btn-success" ng-click="login()">Entrar</button>
+                <button class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="caret"></span></button>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Esqueci minha senha</a></li>
+                  <li><a href="#">Cadastrar</a></li>
+                </ul>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

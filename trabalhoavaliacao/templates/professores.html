@@ -1,0 +1,38 @@
+<div class="container-fluid">
+    <div class="panel panel-default panel-professor">
+        <div class="panel-heading">Profesores</div>
+        <div class="panel-body">
+            <div class="btn-group pull-right">
+                <button class="btn btn-success" ng-click="editaProfessor({})"><i class="glyphicon glyphicon-plus"></i> Incluir</button>
+                <button class="btn btn-danger" ng-click="excluirSelecionados()"><i class="glyphicon glyphicon-trash"></i> Excluir</button>
+            </div>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        <input type="checkbox" ng-model="todos" ng-click="marcarTodos()">
+                    </th>
+                    <th>Matrícula</th>
+                    <th>Nome</th>
+                    <th>Telefone</th>
+                    <th>&nbsp;</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="(id, professor) in professores track by $index">
+                    <td>
+                        <input type="checkbox" name="excluir" ng-model="professor.excluir">
+                    </td>
+                    <td>{{professor.matricula}}</td>
+                    <td>{{professor.nome}}</td>
+                    <td>{{professor.telefone}}</td>
+                    <td>
+                        <button type="button" class="btn btn-primary" ng-click="editaProfessor(professor, id)"><i class="glyphicon glyphicon-pencil"></i></button>
+                        <button type="button" class="btn btn-danger" ng-click="excluiProfessor(id)"><i class="glyphicon glyphicon-trash"></i></button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

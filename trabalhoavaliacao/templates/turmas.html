@@ -1,0 +1,38 @@
+<div class="container-fluid">
+    <div class="panel panel-default panel-lista">
+        <div class="panel-heading">Profesores</div>
+        <div class="panel-body">
+            <div class="btn-group pull-right">
+                <button class="btn btn-success" ui-sref="turma({id: 'new'})"><i class="glyphicon glyphicon-plus"></i> Incluir</button>
+                <button class="btn btn-danger" ng-click="excluirSelecionados()"><i class="glyphicon glyphicon-trash"></i> Excluir</button>
+            </div>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        <input type="checkbox" ng-model="todos" ng-click="marcarTodos()">
+                    </th>
+                    <th>Nome</th>
+                    <th>Professor</th>
+                    <th>Alunos</th>
+                    <th>&nbsp;</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="(id, turma) in turmas track by $index">
+                    <td>
+                        <input type="checkbox" name="excluir" ng-model="turma.excluir">
+                    </td>
+                    <td>{{turma.nome}}</td>
+                    <td>{{turma.professorNome}}</td>
+                    <td>{{(turma.alunos || []).length | number:0}}</td>
+                    <td>
+                        <button type="button" class="btn btn-primary" ui-sref="turma({id:id})"><i class="glyphicon glyphicon-pencil"></i></button>
+                        <button type="button" class="btn btn-danger" ng-click="excluiTurma(id)"><i class="glyphicon glyphicon-trash"></i></button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

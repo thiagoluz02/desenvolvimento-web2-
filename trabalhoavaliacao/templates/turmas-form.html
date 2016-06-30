@@ -1,0 +1,65 @@
+<div class="container-fluid">
+    <div class="panel panel-default panel-professor">
+        <div class="panel-heading">Turma</div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-12">
+
+                    <form class="form-horizontal" name="formTurma" ng-submit="gravar()" novalidate>
+                        <div class="form-group" ng-class="{'has-error': formTurma.nome.$error.required && formTurma.$submitted}">
+                            <label for="nome" class="col-sm-2 control-label">Nome</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="nome" name="nome" ng-model="turma.nome" placeholder="Nome" required>
+                                <span class="help-block" ng-if="formTurma.nome.$error.required && formTurma.$submitted">* Informe o nome da Turma</span>
+                            </div>
+                        </div>
+                        <div class="form-group" ng-class="{'has-error': formTurma.professor.$error.required && formTurma.$submitted}">
+                            <label for="professor" class="col-sm-2 control-label">Professor</label>
+                            <div class="col-sm-10">
+                                <select class="form-control" name="professor" id="professor" ng-model="turma.professor" required ng-options="professor as professor.nome for professor in professores track by professor.id">
+                                    <option value="">Selecione o professor</option>
+                                </select>
+                                <span class="help-block" ng-if="formTurma.professor.$error.required && formTurma.$submitted">* Informe o Professor</span>
+                            </div>
+                        </div>
+                        <div class="pull-right">
+                            <button class="btn btn-primary" type="submit">OK</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 20px;">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="aluno" class="col-sm-2 control-label">Selecione o Aluno</label>
+                        <div class="col-sm-8">
+                            <select class="form-control" name="aluno" id="aluno" ng-model="aluno" ng-options="aluno as aluno.nome for aluno in alunos track by aluno.id">
+                            </select>
+                        </div>
+                        <div class="col-sm-2">
+                            <button class="btn btn-primary" ng-click="adicionarAluno(aluno)">Adicionar</button>
+                        </div>
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Aluno</th>
+                                    <th>Matrícula</th>
+                                    <th>Email</th>
+                                    <th>&nbsp;</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="aluno in alunosTurma track by $index">
+                                    <td>{{aluno.nome}}</td>
+                                    <td>{{aluno.matricula}}</td>
+                                    <td>{{aluno.email}}</td>
+                                    <td><button class="btn btn-danger" ng-click="removerAluno(aluno.id)"><i class="glyphicon glyphicon-trash"></i></button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>

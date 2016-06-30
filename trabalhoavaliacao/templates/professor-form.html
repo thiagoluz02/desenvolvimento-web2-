@@ -1,0 +1,43 @@
+<div class="modal-header">
+    <h3 class="modal-title">Professor</h3>
+</div>
+<div class="modal-body">
+    <form class="form-horizontal" name="formProfessor" ng-submit="ok()" novalidate>
+        <div class="form-group" ng-class="{'has-error': formProfessor.nome.$error.required && tentouGravar}">
+            <label for="nome" class="col-sm-2 control-label">Nome</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="nome" name="nome" ng-model="professor.nome" placeholder="Nome" required>
+                <span class="help-block" ng-if="formProfessor.nome.$error.required && tentouGravar">* Informe o nome do professor</span>
+            </div>
+        </div>
+        <div class="form-group" ng-class="{'has-error': formProfessor.matricula.$error.required && tentouGravar}">
+            <label for="matricula" class="col-sm-2 control-label">Matrícula</label>
+            <div class="col-sm-10">
+                <input type="number" class="form-control" id="matricula" ng-model="professor.matricula" name="matricula" placeholder="Matricula" required>
+                <span class="help-block" ng-if="formProfessor.matricula.$error.required && tentouGravar">* Informe a matrícula</span>
+            </div>
+        </div>
+        <div class="form-group" ng-class="{'has-error': formProfessor.email.$invalid && tentouGravar}">
+            <label for="email" class="col-sm-2 control-label">Email</label>
+            <div class="col-sm-10">
+                <input type="email" class="form-control" id="email" ng-model="professor.email" name="email" placeholder="Email" required>
+    <span class="help-block" ng-if="formProfessor.email.$error.required && tentouGravar">* Informe o email</span>
+            <span class="help-block" ng-if="formProfessor.email.$error.email && tentouGravar">* Email Inválido</span>
+
+            </div>
+        </div>
+        <div class="form-group" ng-class="{'has-error': formProfessor.telefone.$invalid && tentouGravar}">
+            <label for="telefone" class="col-sm-2 control-label">Telefone</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="telefone" ng-model="professor.telefone" name="telefone" placeholder="Telefone" required>
+    <span class="help-block" ng-if="formProfessor.email.$error.required && tentouGravar">* Informe o telefone</span>
+
+            </div>
+        </div>
+    </form>
+
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+    <button class="btn btn-warning" type="button" ng-click="cancel()">Cancelar</button>
+</div>

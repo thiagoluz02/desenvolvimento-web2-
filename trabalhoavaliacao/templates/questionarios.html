@@ -1,0 +1,38 @@
+<div class="container-fluid">
+    <div class="panel panel-default panel-lista">
+        <div class="panel-heading">Quetionario</div>
+        <div class="panel-body">
+            <div class="btn-group pull-right">
+                <button class="btn btn-success" ui-sref="questionario({id: 'new'})"><i class="glyphicon glyphicon-plus"></i> Incluir</button>
+                <button class="btn btn-danger" ng-click="excluirSelecionado()"><i class="glyphicon glyphicon-trash"></i> Excluir</button>
+            </div>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        <input type="checkbox" ng-model="todos" ng-click="marcarTodos()">
+                    </th>
+                    <th>questionario</th>
+                    <th>Pergunta</th>
+                   
+                    <th>&nbsp;</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="(id, questionario) in questionarios track by $index">
+                    <td>
+                        <input type="checkbox" name="excluir" ng-model="questionario.excluir">
+                    </td>
+                    <td>{{questionario.nome}}</td>
+                  
+                    <td>{{(questionario.perguntas || []).length | number:0}}</td>
+                    <td>
+                        <button type="button" class="btn btn-primary" ui-sref="questionario({id:id})"><i class="glyphicon glyphicon-pencil"></i></button>
+                        <button type="button" class="btn btn-danger" ng-click="excluiQuestionario(id)"><i class="glyphicon glyphicon-trash"></i></button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
