@@ -1,0 +1,14 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <application>
+        <activity
+            android:name="com.example.thiag.helpchacklist.CreateActivity"
+            android:label="@string/title_activity_create"
+            android:parentActivityName="com.example.thiag.helpchacklist.menuActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.thiag.helpchacklist.menuActivity" />
+        </activity>
+    </application>
+</manifest>
